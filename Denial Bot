@@ -1,0 +1,22 @@
+import discord
+import os
+import time
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print("I'm in")
+    print(client.user)
+
+@client.event
+async def on_message(message):
+    if message.author != client.user:
+        await message.channel.send("You're really sweet, but I'm just not interested in any long-term relationship at the moment. It's not you, it's me. I've just been hurt too many times.")
+        time.sleep(6)
+        await message.channel.send("Oh god don't cry, you'll find someone special one day.")
+        time.sleep(6)
+        await message.channel.send("This is getting akward. I'm just not interested. There's not much more I can say. I think it's best you leave...")
+
+token = os.environ['DISCORD_BOT_SECRET']
+client.run(token)
